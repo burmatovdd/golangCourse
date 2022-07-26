@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="user-info">
+        <div class="block name">Name: {{.User.Name}}</div>
+        <div class="block surname">Surname: {{.User.Surname}}</div>
+        <div class="block patronymic">Patronymic: {{.User.Patronymic}}</div>
+        <div class="block education">Education: {{.User.Education.MainEdu}}</div>
+        <div class="block courses">Courses:
+            <ul>
+                {{range .User.Education.Courses}}
+                <li>
+                    {{print .Name}}
+                </li>
+                {{end}}
+            </ul>
+        </div>
+        <div class="block work">Works:
+            <ul>
+                {{range .User.Work}}
+                <li class="work-item">
+                    {{print .Company}}
+                    <br>
+                    Projects:
+                    <ul class="work-item_project">
+                        {{range .Projects}}
+                        <li class="work-item_project-item">
+                            {{print .Name}}
+                        </li>
+                        {{end}}
+                    </ul>
+                </li>
+                {{end}}
+            </ul>
+        </div>
+        <div class="block stack">Stack:
+            <ul>
+                {{range .User.Stack}}
+                <li>
+                    {{print .Name}}
+                </li>
+                {{end}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<style>
+    .container{
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: darkred;
+        align-items: center;
+    }
+    .block{
+        font-family: AkayaKanadaka, sans-serif;
+        color: white;
+        margin-top: 20px;
+    }
+    .work-item, .work-item_project{
+        margin-top: 10px;
+    }
+    .work-item_project-item{
+        margin-top: 10px;
+    }
+
+</style>
